@@ -1,101 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SUNMIRS</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peng Sun, PhD | Zebrafish Auditory & Vestibular Research</title>
+  <meta name="description" content="Peng Sun, PhD — Postdoctoral Fellow at Stanford Medicine. Research in zebrafish auditory and vestibular systems, optical engineering, electronic and computer engineering, and biomedical engineering." />
   <style>
+    :root {
+      --bg: #f6edf5;
+      --card: #fff8fd;
+      --ink: #101238;
+      --muted: #4b4f68;
+      --navy: #07134d;
+      --blue: #1d6fa5;
+      --red: #8c1515;
+      --line: rgba(7, 19, 77, 0.12);
+      --shadow: 0 18px 45px rgba(25, 24, 80, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f8fafc, #eef2ff);
-      color: #111827;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(140, 21, 21, 0.12), transparent 32%),
+        radial-gradient(circle at 88% 18%, rgba(29, 111, 165, 0.16), transparent 35%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
     }
 
-    .container {
-      max-width: 760px;
+    a { color: inherit; }
+
+    .page {
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 80px 24px;
-      text-align: center;
+      padding: 34px 20px 48px;
     }
 
-    .card {
-      background: white;
-      padding: 48px 32px;
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    .poster {
+      background: linear-gradient(180deg, #fff7fc 0%, #f8eaf6 100%);
+      border: 1px solid rgba(7, 19, 77, 0.10);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 34px 18px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .subtitle {
-      font-size: 20px;
-      color: #4f46e5;
-      margin-bottom: 24px;
-      font-weight: bold;
+    .stanford {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #374151;
-      margin: 8px 0;
+    .stanford .name {
+      color: var(--red);
+      font-size: 30px;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-    .email {
-      margin-top: 28px;
-      font-size: 16px;
+    .stanford .medicine {
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      color: #222;
     }
 
-    .email a {
-      color: #4f46e5;
+    .site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy);
+      color: white;
       text-decoration: none;
-      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .title-block h1 {
+      margin: 0 0 10px;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+    }
+
+    .title-block .role {
+      font-size: 24px;
+      font-weight: 750;
+      color: var(--navy);
+      margin: 12px 0 8px;
+    }
+
+    .title-block .summary {
+      max-width: 660px;
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .brain-card {
+      min-height: 255px;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 38% 42%, rgba(0, 185, 255, 0.75), transparent 16%),
+        radial-gradient(circle at 58% 42%, rgba(72, 215, 255, 0.65), transparent 23%),
+        linear-gradient(135deg, #08133a, #16315d 58%, #05091d);
+      color: white;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .brain-card:before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 120px;
+      border: 3px solid rgba(120, 221, 255, 0.75);
+      border-radius: 50% 52% 44% 48%;
+      right: 34px;
+      top: 48px;
+      filter: blur(0.2px);
+      transform: rotate(-8deg);
+    }
+
+    .brain-card:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08));
+    }
+
+    .brain-card h2 {
+      position: relative;
+      margin: 0 0 6px;
+      font-size: 30px;
+      z-index: 1;
+    }
+
+    .brain-card p {
+      position: relative;
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      z-index: 1;
+    }
+
+    .grid {
+      padding: 0 34px 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .box h3 {
+      display: inline-block;
+      min-width: 58%;
+      margin: 0;
+      padding: 9px 20px 10px;
+      background: var(--navy);
+      color: white;
+      border-radius: 0 0 22px 0;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .box .content {
+      padding: 18px 22px 22px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 21px;
+    }
+
+    li { margin: 8px 0; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .tag {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 8px 16px;
+      display: inline-flex;
+      padding: 7px 11px;
       border-radius: 999px;
-      background: #eef2ff;
-      color: #4338ca;
+      background: rgba(7, 19, 77, 0.08);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .links {
+      padding: 0 34px 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .link-card {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(7, 19, 77, 0.10);
+    }
+
+    .link-card strong {
+      display: block;
+      font-size: 18px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .link-card span {
+      color: var(--muted);
       font-size: 14px;
     }
 
     footer {
-      margin-top: 28px;
-      font-size: 13px;
-      color: #6b7280;
+      padding: 18px 34px 26px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 780px) {
+      .topbar, .hero, .grid, .links, footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stanford {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .hero, .grid, .links {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .brain-card {
+        min-height: 220px;
+      }
     }
   </style>
 </head>
-
 <body>
-  <main class="container">
-    <section class="card">
-      <h1>MIRS SUN</h1>
+  <main class="page">
+    <section class="poster" aria-label="Peng Sun homepage">
+      <header class="topbar">
+        <div class="stanford" aria-label="Stanford Medicine">
+          <span class="name">Stanford</span>
+          <span class="medicine">MEDICINE</span>
+        </div>
+        <!--<a class="site-link" href="https://zebrafish.cc" target="_blank" rel="noopener">zebrafish.cc ↗</a>-->
+      </header>
 
-      <div class="subtitle">Postdoctoral Researcher</div>
+      <section class="hero">
+        <div class="title-block">
+          <h1 style="font-size: 36.5px;">Peng Sun, PhD</h1>
+          <div class="role">Postdoctoral Fellow</div>
+          <p class="summary">
+            Researcher in zebrafish auditory and vestibular neuroscience, with interdisciplinary training in optical engineering, electronic and computer engineering, and biomedical engineering.
+          </p>
+        </div>
 
-      <p>Stanford University</p>
-      <p>Zebrafish Hearing · Startle Response · Auditory Processing</p>
+        <div class="brain-card" aria-label="Research focus card">
+          <h2>Zebrafish Hearing & Balance</h2>
+          <p>Behavioral assays · instrumentation · inner ear hair cells</p>
+        </div>
+      </section>
 
-      <div class="email">
-        📧 <a href="mailto:admin@sunmirs.com">admin@sunmirs.com</a>
-      </div>
+      <section class="grid">
+        <article class="box">
+          <h3>Research Focus</h3>
+          <div class="content">
+            <ul>
+              <li>Behavioral assays for evaluating hearing and balance function in zebrafish larvae</li>
+              <li>Auditory and vestibular instrumentation for high-throughput behavioral studies</li>
+              <li>Current work exploring the role of Tmc1/2 proteins in inner ear hair cells</li>
+            </ul>
+          </div>
+        </article>
 
-      <div class="tag">Website under construction</div>
+        <article class="box">
+          <h3>Expertise</h3>
+          <div class="content">
+            <ul>
+              <li>Optical Engineering</li>
+              <li>Electronic & Computer Engineering</li>
+              <li>Biomedical Engineering</li>
+              <li>Zebrafish behavioral imaging and analysis</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="box">
+          <h3>Education</h3>
+          <div class="content">
+            <ul>
+              <li>PhD in Electrical and Computer Engineering</li>
+              <li>University of Macau — Southern University of Science and Technology Joint PhD Program</li>
+              <li>PhD thesis focused on zebrafish hearing/balance behavioral assays</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="box">
+          <h3>Keywords</h3>
+          <div class="content">
+            <div class="tag-row">
+              <span class="tag">Zebrafish</span>
+              <span class="tag">Hearing</span>
+              <span class="tag">Balance</span>
+              <span class="tag">Vestibular</span>
+              <span class="tag">Hair Cells</span>
+              <span class="tag">Tmc1/2</span>
+              <span class="tag">Behavioral Assays</span>
+              <span class="tag">Instrumentation</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="links" aria-label="zebrafish">
+        <a class="link-card" href="https://zebrafish.cc" target="_blank" rel="noopener">
+          <strong>zebrafish</strong>
+          <span>zebrafish.cc</span>
+        </a>
+        <a class="link-card" href="https://scholar.google.com.hk/citations?user=IwnOpHgAAAAJ&hl=zh-CN" target="_blank" rel="noopener">
+          <strong>Google Scholar</strong>
+          <span>Publications and citations</span>
+        </a>
+        <a class="link-card" href="https://profiles.stanford.edu/peng-sun?tab=bio" target="_blank" rel="noopener">
+          <strong>Stanford Profile</strong>
+          <span>Official Stanford Medicine bio</span>
+        </a>
+      </section>
+
+      <footer>
+        <span>© Peng Sun 2026</span>
+        <span>Auditory & Vestibular Neuroscience · Zebrafish Behavioral Instrumentation</span>
+      </footer>
     </section>
-
-    <footer>
-      © 2026 SUNMIRS
-    </footer>
   </main>
 </body>
 </html>
